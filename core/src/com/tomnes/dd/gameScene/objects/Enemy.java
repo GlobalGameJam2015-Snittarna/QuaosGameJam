@@ -59,7 +59,7 @@ public abstract class Enemy extends Killable {
 	public void attack(float deltaTime) {
 		for(GameObject g : getScene().getObjects()) {
 			if (g instanceof Player) {
-				shootAngle = (float)Math.atan2(getPosition().y-g.getPosition().y, getPosition().x-g.getPosition().x);
+				shootAngle = (float)Math.atan2(g.getPosition().y-getPosition().y, g.getPosition().x-getPosition().x);
 			}
 		}
 	}
