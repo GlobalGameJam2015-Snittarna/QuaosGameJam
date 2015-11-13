@@ -28,6 +28,16 @@ public class Rectangle {
         return res;
 	}
 	
+	// test against 1x1 point
+	public boolean collision(float x, float y) {
+		return overlap(this.x, x, width, 1) && overlap(this.y, y, height, 1);
+	}
+	
+	// test against 1x1 point
+	public boolean collision(Vector2 point) {
+		return collision(point.x, point.y);
+	}
+	
 	public void set(float x, float y, float width, float height) {
 		this.x = x;
 		this.y = y;
