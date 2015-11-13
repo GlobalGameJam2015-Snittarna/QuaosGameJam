@@ -33,6 +33,8 @@ public abstract class AssetManager {
 	}
 	
 	public static TextureRegion getTexture(String name) {
+		if (regions == null) load();
+		
 		if (!regions.containsKey(name)) {
 			System.out.println("WARNING: Sprite " + name + " couldnt be found");
 			return regions.get("error");
