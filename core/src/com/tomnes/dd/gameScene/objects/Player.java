@@ -13,15 +13,18 @@ public class Player extends GameObject {
 
 	private final float speed = 3;
 	private Joystick moveInput;
+	private Joystick shootInput;
 	
 	public Player() {
 		super(new Vector2(0, 0), new Vector2(1.5f, 1.5f), new Animation(AssetManager.getTexture("player")));
 
 		moveInput = new Joystick(new Rectangle(125, -725, 250, 250));
+		shootInput = new Joystick(new Rectangle(-375, -725, 250, 250));
 	}
 
 	public void update(float dt) {
 		moveInput.update();
+		shootInput.update();
 		
 		if (moveInput.isPressed()) {
 			float m = (moveInput.getMag() > .3f ? 1 : .3f);
@@ -33,5 +36,6 @@ public class Player extends GameObject {
 	
 	public void drawUi(SpriteBatch batch) {
 		moveInput.draw(batch);
+		shootInput.draw(batch);
 	}
 }

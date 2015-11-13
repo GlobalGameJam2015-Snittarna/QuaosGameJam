@@ -33,9 +33,7 @@ public class Joystick extends UiElement {
 	
 	public void onDrag() {
 		Vector2 delta = getNewMouse().cpy().sub(new Vector2(center.x + getArea().getX(), center.y + getArea().getY()));
-		System.out.println(delta);
 		angle = MathUtils.atan2(delta.y, delta.x);
-		System.out.println(angle);
 		mag = delta.len() / center.x;
 	}
 
