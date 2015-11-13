@@ -25,6 +25,8 @@ public class Game extends ApplicationAdapter {
 	public void create () {
 		Gdx.graphics.setDisplayMode(450, 800, false);
 		
+		Gdx.input.setCatchBackKey(true);
+		
 		Input.initialize(900, 1600, 450, 800); // defined in scenes. 
 		
 		batch = new SpriteBatch();

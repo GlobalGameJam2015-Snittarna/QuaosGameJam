@@ -13,7 +13,7 @@ public class Joystick extends UiElement {
 	
 	public Joystick(Rectangle area) {
 		super(area);
-		
+		keepGrabbed = true;
 		this.center = new Vector2(area.getWidth() / 2, area.getHeight() / 2);
 	}
 	
@@ -26,7 +26,9 @@ public class Joystick extends UiElement {
 	}
 	
 	public float getMag() {
-		return mag;
+		mag *= 1.2f;
+		if (mag > 1) return 1;
+		else return mag;
 	}
 	
 	public void onDrag() {
@@ -34,7 +36,7 @@ public class Joystick extends UiElement {
 		System.out.println(delta);
 		angle = MathUtils.atan2(delta.y, delta.x);
 		System.out.println(angle);
-		mag = delta.len() * center.x;
+		mag = delta.len() / center.x;
 	}
 
 	public void draw(SpriteBatch batch) {

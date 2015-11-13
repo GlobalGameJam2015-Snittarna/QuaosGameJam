@@ -53,6 +53,7 @@ public class Input {
 	}
 	
 	public static Vector2 getTouchPoint(int p) {
+		if (p < 0 || p >= points) return null;
 		return new Vector2(x[p], y[p]);
 	}
 	
@@ -112,5 +113,10 @@ public class Input {
 	public static boolean areaWasJustClicked(float _x, float _y, float width, float height) {
 		for (int i = 0; i < points; i++) if (x[i] >= _x && y[i] >= _y && x[i] <= _x + width && y[i] <= _y + height && isPressed[i] && !wasPressed[i]) return true;
 		return false;
+	}
+
+	public static boolean isPressed(int i) {
+		if (i < 0 || i >= points) return false;
+		else return isPressed[i];
 	}
 }
