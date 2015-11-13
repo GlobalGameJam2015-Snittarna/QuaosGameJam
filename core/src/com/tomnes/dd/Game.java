@@ -1,13 +1,12 @@
 package com.tomnes.dd;
 
-import gameScene.GameScene;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.tomnes.dd.framework.Scene;
+import com.tomnes.dd.gameScene.GameScene;
 
 public class Game extends ApplicationAdapter {
 	SpriteBatch batch, uiBatch;
@@ -25,6 +24,8 @@ public class Game extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		currentScene = new GameScene();
+		
+		AssetManager.load();
 	}
 	
 	public void update() {
