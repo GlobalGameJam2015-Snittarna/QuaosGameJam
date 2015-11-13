@@ -5,11 +5,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.Animation;
-import com.tomnes.dd.framework.GameObject;
+import com.tomnes.dd.framework.Killable;
 import com.tomnes.dd.framework.Rectangle;
 import com.tomnes.dd.ui.Joystick;
 
-public class Player extends GameObject {
+public class Player extends Killable {
 
 	private final float speed = 3;
 	private Joystick moveInput;
