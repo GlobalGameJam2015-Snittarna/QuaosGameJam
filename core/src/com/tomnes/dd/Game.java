@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.tomnes.dd.framework.Scene;
 import com.tomnes.dd.gameScene.GameScene;
+import com.tomnes.dd.utils.Input;
 
 public class Game extends ApplicationAdapter {
 	SpriteBatch batch, uiBatch;
@@ -24,6 +25,8 @@ public class Game extends ApplicationAdapter {
 	public void create () {
 		Gdx.graphics.setDisplayMode(450, 800, false);
 		
+		Input.initialize(900, 1600, 450, 800); // defined in scenes. 
+		
 		batch = new SpriteBatch();
 		currentScene = new GameScene();
 		
@@ -31,6 +34,8 @@ public class Game extends ApplicationAdapter {
 	}
 	
 	public void update() {
+		Input.update();
+		
 		currentScene.update(Gdx.graphics.getDeltaTime());
 		if(Gdx.input.isKeyPressed(Keys.ESCAPE)) Gdx.app.exit();
 		
