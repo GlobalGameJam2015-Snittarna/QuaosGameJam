@@ -10,8 +10,10 @@ public abstract class Killable extends GameObject {
 	private float hitTime;
 	private float maxHitTime;
 	
-	public Killable(Vector2 position, Vector2 size, Animation sprite) {
+	public Killable(Vector2 position, Vector2 size, Animation sprite, float maxHealth) {
 		super(position, size, sprite);
+		this.maxHealth = maxHealth;
+		this.health = this.maxHealth;
 		// TODO Auto-generated constructor stub
 	}
 	
