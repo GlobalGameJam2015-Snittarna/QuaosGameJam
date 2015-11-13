@@ -18,6 +18,8 @@ public abstract class UiElement {
 
 	private int isPressed, wasPressed, isHover, wasHover; // index of pointer, -1 if nothing
 	
+	protected boolean keepGrabbed;
+	
 	protected boolean isHover() {
 		return isHover != -1;
 	}
@@ -90,9 +92,15 @@ public abstract class UiElement {
 	
 	// called each frame
 	public void update() {
-		isPressed = Input.areaIsClicked(area);
+		if (keepGrabbed && Input.isPressed(isPressed) && wasPressed()) {
+			
+		} else {
+			isPressed = Input.areaIsClicked(area);
+		}
+		
 		isHover   = Input.intersectingWith(area);
 		if (isHover()) newMouse = Input.getTouchPoint(isHover);
+		else if (keepGrabbed && isPressed()) newMouse = Input.getTouchPoint(isPressed);
 		
 		if (!wasHover() && isHover()) {
 			onMouseEnter();

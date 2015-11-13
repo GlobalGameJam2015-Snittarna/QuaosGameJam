@@ -7,24 +7,25 @@ import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.Animation;
 import com.tomnes.dd.framework.GameObject;
 import com.tomnes.dd.framework.Rectangle;
-import com.tomnes.dd.ui.Button;
 import com.tomnes.dd.ui.Joystick;
 
 public class Player extends GameObject {
 
+	private final float speed = 3;
 	private Joystick moveInput;
 	
 	public Player() {
-		super(new Vector2(0, 0), new Vector2(1, 1), new Animation(AssetManager.getTexture("player")));
+		super(new Vector2(0, 0), new Vector2(1.5f, 1.5f), new Animation(AssetManager.getTexture("player")));
 
-		moveInput = new Joystick(new Rectangle(200, -750, 200, 200));
+		moveInput = new Joystick(new Rectangle(125, -725, 250, 250));
 	}
 
 	public void update(float dt) {
 		moveInput.update();
 		
 		if (moveInput.isPressed()) {
-			setPosition(getPosition().cpy().add(new Vector2(MathUtils.cos(moveInput.getAngle()), MathUtils.sin(moveInput.getAngle())).scl(.1f)));
+			float m = (moveInput.getMag() > .3f ? 1 : .3f);
+			setPosition(getPosition().cpy().add(new Vector2(MathUtils.cos(moveInput.getAngle()), MathUtils.sin(moveInput.getAngle())).scl(dt * speed * m)));
 		}
 		
 		super.update(dt);
