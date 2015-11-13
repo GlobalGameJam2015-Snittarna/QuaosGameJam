@@ -17,9 +17,7 @@ public class GameScene extends Scene {
 		addObject(new Player());
 	}
 	
-	public void drawUi(SpriteBatch batch) {
-		for (Vector2 v : Input.getTouchPoints()) AssetManager.font.draw(batch, "x", v.x, v.y);
-		
+	public void drawUi(SpriteBatch batch) {		
 		super.drawUi(batch);
 	}
 	
