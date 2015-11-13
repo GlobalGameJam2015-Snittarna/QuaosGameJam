@@ -17,7 +17,7 @@ public abstract class GameObject {
 	private Animation sprite;
 	private Scene scene;
 	private float depth;
-	
+
 	public void setPosition(Vector2 p) { 
 		position = p;
 		if (sprite != null) sprite.setPosition(position.x - sprite.getOriginX() / sprite.getRegionWidth(), position.y - sprite.getOriginY() / sprite.getRegionHeight());
