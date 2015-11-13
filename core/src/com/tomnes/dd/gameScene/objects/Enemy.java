@@ -21,7 +21,7 @@ public abstract class Enemy extends Killable {
 	private boolean inRoom;
 	
 	public Enemy(Vector2 position, Vector2 size, Animation sprite) {
-		super(position, size, sprite);
+		super(position, size, sprite, 5);
 		
 		if(getPosition().x >= 4.5f) {
 			target = new Vector2(this.getPosition().x-3, this.getPosition().y);
