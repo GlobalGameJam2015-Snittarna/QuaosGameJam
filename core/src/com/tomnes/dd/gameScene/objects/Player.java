@@ -5,18 +5,18 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.Animation;
-import com.tomnes.dd.framework.GameObject;
+import com.tomnes.dd.framework.Killable;
 import com.tomnes.dd.framework.Rectangle;
 import com.tomnes.dd.ui.Joystick;
 
-public class Player extends GameObject {
+public class Player extends Killable {
 
 	private final float speed = 3;
 	private Joystick moveInput;
 	private Joystick shootInput;
 	
 	public Player() {
-		super(new Vector2(0, 0), new Vector2(1.5f, 1.5f), new Animation(AssetManager.getTexture("player")));
+		super(new Vector2(0, 0), new Vector2(1.5f, 1.5f), new Animation(AssetManager.getTexture("player")), 1);
 
 		moveInput = new Joystick(new Rectangle(125, -725, 250, 250));
 		shootInput = new Joystick(new Rectangle(-375, -725, 250, 250));
