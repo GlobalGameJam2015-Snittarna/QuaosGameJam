@@ -37,4 +37,8 @@ public class Room {
 	public void draw(SpriteBatch batch) {
 		sprite.draw(batch);
 	}
+	
+	public float wallSize() {
+		return 0.36f;
+	}
 }
