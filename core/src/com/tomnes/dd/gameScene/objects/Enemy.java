@@ -1,10 +1,9 @@
-package com.tomnes.dd.gameScene;
+package com.tomnes.dd.gameScene.objects;
 
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.framework.Animation;
 import com.tomnes.dd.framework.GameObject;
 import com.tomnes.dd.framework.Killable;
-import com.tomnes.dd.gameScene.objects.Player;
 
 public abstract class Enemy extends Killable {
 	private float shootAngle;

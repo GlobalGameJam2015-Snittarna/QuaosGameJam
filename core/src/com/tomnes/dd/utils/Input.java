@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.Game;
 import com.tomnes.dd.framework.Point;
+import com.tomnes.dd.framework.Rectangle;
 
 public class Input {
 	final static int points = 3; //how many multitouch points are checked
@@ -51,6 +52,10 @@ public class Input {
 		for (int i = 0; i < points; i++) getInput(i);
 	}
 	
+	public static Vector2 getTouchPoint(int p) {
+		return new Vector2(x[p], y[p]);
+	}
+	
 	private static void getInput(int pointer) {
 		x[pointer] = Gdx.input.getX(pointer) * scaleX - OX;
 		y[pointer] = H - (Gdx.input.getY(pointer) * scaleY) - OY;
@@ -86,14 +91,22 @@ public class Input {
 		return isPressed() && !wasPressed();
 	}
 	
-	public static boolean intersectingWith(float _x, float _y, float width, float height) {
-		for (int i = 0; i < points; i++) if (x[i] >= _x && y[i] >= _y && x[i] <= _x + width && y[i] <= _y + height) return true;
-		return false;
+	public static int intersectingWith(Rectangle area) {
+		return intersectingWith(area.getX(), area.getY(), area.getWidth(), area.getHeight());
 	}
 	
-	public static boolean areaIsClicked(float _x, float _y, float width, float height) {
-		for (int i = 0; i < points; i++) if (x[i] >= _x && y[i] >= _y && x[i] <= _x + width && y[i] <= _y + height && isPressed[i]) return true;
-		return false;
+	public static int intersectingWith(float _x, float _y, float width, float height) {
+		for (int i = 0; i < points; i++) if (x[i] >= _x && y[i] >= _y && x[i] <= _x + width && y[i] <= _y + height) return i;
+		return -1;
+	}
+	
+	public static int areaIsClicked(Rectangle area) {
+		return areaIsClicked(area.getX(), area.getY(), area.getWidth(), area.getHeight());
+	}
+	
+	public static int areaIsClicked(float _x, float _y, float width, float height) {
+		for (int i = 0; i < points; i++) if (x[i] >= _x && y[i] >= _y && x[i] <= _x + width && y[i] <= _y + height && isPressed[i]) return i;
+		return -1;
 	}
 	
 	public static boolean areaWasJustClicked(float _x, float _y, float width, float height) {
