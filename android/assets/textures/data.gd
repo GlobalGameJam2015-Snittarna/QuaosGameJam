@@ -1,6 +1,6 @@
 textures: {
 	error: 0, 0, 40, 22;
-	player: 131, 194, 64, 64;
+	player: 1, 194, 32, 64;
 	room1: 326, 128, 450, 800;
 	
 	spiderBomb: 1, 324, 64, 64;
