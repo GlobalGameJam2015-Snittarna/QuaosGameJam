@@ -18,6 +18,8 @@ public class Room {
 		
 		sprite.setPosition(-4.5f, -8);
 		
+		doors = new Vector2[4];
+		
 		doors[0] = Vector2.Zero;
 		doors[1] = Vector2.Zero;
 		doors[2] = Vector2.Zero;
