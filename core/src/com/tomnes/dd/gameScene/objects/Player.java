@@ -7,7 +7,6 @@ import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.Animation;
 import com.tomnes.dd.framework.GameObject;
 import com.tomnes.dd.framework.Rectangle;
-import com.tomnes.dd.ui.Button;
 import com.tomnes.dd.ui.Joystick;
 
 public class Player extends GameObject {
