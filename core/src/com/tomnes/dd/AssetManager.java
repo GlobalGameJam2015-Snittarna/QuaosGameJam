@@ -19,7 +19,7 @@ public abstract class AssetManager {
 	public static void load() {
 		FreeTypeFontGenerator g = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Moms_typewriter.ttf"));
 		FreeTypeFontParameter param = new FreeTypeFontParameter();
-		param.size = 100;
+		param.size = 45;
 		font = g.generateFont(param);
 		
 		regions = new HashMap<String, TextureRegion>();

@@ -11,7 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
 public abstract class Scene {
-	public final int UI_W = 1600, UI_H = 900, G_W = 16, G_H = 9; // camera size in game and ui
+	public final int UI_W = 900, UI_H = 1600, G_W = 9, G_H = 16; // camera size in game and ui
 	
 	private boolean depthChanged;
 	

@@ -14,6 +14,8 @@ public class GameScene extends Scene {
 	public void drawUi(SpriteBatch batch) {
 		AssetManager.font.draw(batch, "It works!", 0, 0);
 		
+		batch.draw(AssetManager.getTexture("test"), 0, 2);
+		
 		super.drawUi(batch);
 	}
 }
