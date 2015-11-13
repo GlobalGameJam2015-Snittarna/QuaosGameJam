@@ -26,17 +26,17 @@ public abstract class Enemy extends Killable {
 		if(getPosition().x >= 4.5f) {
 			target = new Vector2(this.getPosition().x-3, this.getPosition().y);
 		}
-		
-		if(getPosition().x <= -4.5f) {
+		else if(getPosition().x <= -4.5f) {
 			target = new Vector2(this.getPosition().x+3, this.getPosition().y);
 		}
-		
-		if(getPosition().y >= 8) {
+		else if(getPosition().y >= 8) {
 			target = new Vector2(this.getPosition().x, this.getPosition().y-3);
 		}
-		
-		if(getPosition().y <= -8) {
+		else if(getPosition().y <= -8) {
 			target = new Vector2(this.getPosition().x, this.getPosition().y+3);
+		}
+		else {
+			inRoom = true;
 		}
 	}
 	
@@ -45,9 +45,11 @@ public abstract class Enemy extends Killable {
 		
 		velocity = new Vector2((float)Math.cos(movmentAngle)*speed, (float)Math.sin(movmentAngle)*speed);
 		
+		attack(deltaTime);
+		
 		if(!inRoom) {
 			this.moveTowardsTarget(deltaTime);
-			
+			System.out.println(this.getPosition());
 			if(this.getPosition().sub(target).len() <= 0.1f) {
 				inRoom = true;
 			}
@@ -77,12 +79,12 @@ public abstract class Enemy extends Killable {
 	
 	public void moveTowardsPlayer(float deltaTime) {
 		movmentAngle = shootAngle;
-		this.getPosition().add(new Vector2(velocity.x*deltaTime, velocity.y*deltaTime));
+		setPosition(getPosition().cpy().add(new Vector2(velocity.x*deltaTime, velocity.y*deltaTime)));
 	}
 	
 	public void moveTowardsTarget(float deltaTime) {
 		movmentAngle = (float)Math.atan2(getPosition().y-target.y, getPosition().x-target.x);
-		this.getPosition().add(new Vector2(velocity.x*deltaTime, velocity.y*deltaTime));
+		setPosition(getPosition().cpy().add(new Vector2(velocity.x*deltaTime, velocity.y*deltaTime)));
 	}
 	
 	public float getShootAngle() {
