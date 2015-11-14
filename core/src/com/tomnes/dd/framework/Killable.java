@@ -27,7 +27,7 @@ public abstract class Killable extends GameObject {
 		
 		for(GameObject g : getScene().getObjects()) {
 			if(g instanceof Projectile) {
-				damegeToTake = ((Projectile) g).getDamege();
+				damegeToTake = ((Projectile) g).getDamage();
 				for (GameObject k : getScene().getObjects()) {
 					if(((Projectile) g).hitsPlayer()) {
 						if(k instanceof Player) { 

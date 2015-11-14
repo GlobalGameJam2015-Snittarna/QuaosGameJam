@@ -11,7 +11,7 @@ public abstract class Projectile extends GameObject {
 
 	private float angle, speed;
 	
-	private float damege;
+	private float damage;
 	
 	private boolean hitsPlayer;
 	
@@ -20,7 +20,11 @@ public abstract class Projectile extends GameObject {
 		this.angle = angle;
 		this.speed = speed;
 		this.hitsPlayer = hitsPlayer;
-		this.damege = damege;
+		this.damage = damege;
+		
+
+		getSprite().setRotation(angle * 180 / 3.14f);
+		getSprite().setOriginCenter();
 	}
 	
 	public boolean  hitsPlayer() {
@@ -43,7 +47,11 @@ public abstract class Projectile extends GameObject {
 		getScene().removeObject(this);
 	}
 	
-	public float getDamege() {
-		return damege;
+	public float getDamage() {
+		return damage;
+	}
+	
+	public void draw(SpriteBatch batch) {
+		getSprite().draw(batch);
 	}
 }
