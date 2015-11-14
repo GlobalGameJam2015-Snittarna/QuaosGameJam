@@ -11,13 +11,16 @@ public abstract class Projectile extends GameObject {
 
 	private float angle, speed;
 	
+	private float damege;
+	
 	private boolean hitsPlayer;
 	
-	public Projectile(Vector2 position, Vector2 size, Animation sprite, float angle, float speed, boolean hitsPlayer) {
+	public Projectile(Vector2 position, Vector2 size, Animation sprite, float angle, float speed, float damege, boolean hitsPlayer) {
 		super(position, size, sprite);
 		this.angle = angle;
 		this.speed = speed;
 		this.hitsPlayer = hitsPlayer;
+		this.damege = damege;
 	}
 	
 	public boolean  hitsPlayer() {
@@ -38,5 +41,9 @@ public abstract class Projectile extends GameObject {
 	
 	public void onHitWall() {
 		getScene().removeObject(this);
+	}
+	
+	public float getDamege() {
+		return damege;
 	}
 }

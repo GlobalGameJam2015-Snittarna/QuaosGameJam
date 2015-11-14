@@ -51,7 +51,7 @@ public class Animation extends Sprite {
 	}
 	
 	public void animate(float deltaTime) {
-		animationTime += deltaTime;
+		animationTime += 2*deltaTime;
 		
 		if(!vertical)
 			this.setRegion(minFrame*this.getRegionWidth() + currentFrame*this.getRegionWidth(), 

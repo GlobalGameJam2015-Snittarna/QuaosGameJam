@@ -53,9 +53,7 @@ public class EnemySpawnManager {
 		
 		for(int i = 0; i < maxEnemySpawnTime.length; i++) {
 			enemySpawnTime[i] += 1 * deltaTime;
-			
-			//System.out.println(enemySpawnTime[1] + " AYY LMAL");
-			
+		
 			if(enemySpawnTime[i] >= maxEnemySpawnTime[i]) {
 				if(gameScene.getRoom().getDifficulty() >= 2 && i > 0) {
 					//gameScene.getRoom().decresseEnemiesToSpawn();
