@@ -26,7 +26,8 @@ public class GameScene extends Scene {
 	
 	public void update(float deltaTime) {
 		super.update(deltaTime);
-		enemySpawnManager.update(this, deltaTime);
+		if(!room.isCompleted()) enemySpawnManager.update(this, deltaTime);
+		room.update();
 	}
 	
 	public void drawUi(SpriteBatch batch) {		

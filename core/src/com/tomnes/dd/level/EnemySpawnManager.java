@@ -46,10 +46,11 @@ public class EnemySpawnManager {
 			
 			if(enemySpawnTime[i] >= maxEnemySpawnTime[i]) {
 				if(gameScene.getRoom().getDifficulty() >= i/2 && i > 0) {
-					
+					//gameScene.getRoom().decresseEnemiesToSpawn();
 				}
 				if(i <= 0) {
 					gameScene.addObject(new SpiderBomb(getSpawnPosition(random.nextInt(4))));
+					gameScene.getRoom().decresseEnemiesToSpawn();
 				}
 				enemySpawnTime[i] = 0;
 			}

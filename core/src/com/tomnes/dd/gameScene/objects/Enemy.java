@@ -47,14 +47,12 @@ public abstract class Enemy extends Killable {
 		
 		velocity = new Vector2((float)Math.cos(movmentAngle)*speed, (float)Math.sin(movmentAngle)*speed);
 		
-		System.out.println("I AM IN FACET ALIVE");
-		
 		attack(deltaTime);
 		
 		if(!inRoom) {
 			this.moveTowardsTarget(deltaTime);
 			System.out.println(this.getPosition().sub(target).len());
-			if(this.getPosition().sub(target).len() <= 5f) {
+			if(this.getPosition().sub(target).len() <= 4f) {
 				inRoom = true;
 			}
 		}
