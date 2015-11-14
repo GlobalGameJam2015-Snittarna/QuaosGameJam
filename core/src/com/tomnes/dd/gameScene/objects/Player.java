@@ -33,6 +33,8 @@ public class Player extends Killable {
 	
 	private Powerup intersectedPowerup;
 	
+	private int score;
+
 	public Player() {
 		super(new Vector2(0, 0), new Vector2(.85f, 1.7f), new Animation(AssetManager.getTexture("player")), 10);
 
@@ -49,6 +51,8 @@ public class Player extends Killable {
 		moveInput.update();
 		shootInput.update();
 		powerupPickup.update();
+		
+		System.out.println(score);
 		
 		firerateCounter -= dt;
 		
@@ -120,5 +124,17 @@ public class Player extends Killable {
 			intersectedPowerup.drawName(batch);
 			powerupPickup.draw(batch);
 		}
+	}
+	
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	public void addScore(int add) {
+		this.score += add;
 	}
 }

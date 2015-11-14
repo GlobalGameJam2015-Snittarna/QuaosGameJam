@@ -18,6 +18,8 @@ public abstract class Enemy extends Killable {
 
 	private Vector2 target;
 	
+	private int worth;
+
 	private boolean inRoom;
 	
 	public Enemy(Vector2 position, Vector2 size, Animation sprite) {
@@ -32,6 +34,14 @@ public abstract class Enemy extends Killable {
 		velocity = new Vector2((float)Math.cos(movmentAngle)*speed, (float)Math.sin(movmentAngle)*speed);
 		
 		attack(deltaTime);
+		
+		if(getHealth() <= 0) {
+			for(GameObject g : getScene().getObjects()) {
+				if(g instanceof Player) {
+					((Player) g).addScore(worth);
+				}
+			}
+		}
 		
 		for(GameObject g : getScene().getObjects()) {
 			if(g instanceof Player) {
@@ -150,5 +160,13 @@ public abstract class Enemy extends Killable {
 
 	public void setInRoom(boolean inRoom) {
 		this.inRoom = inRoom;
+	}
+	
+	public int getWorth() {
+		return worth;
+	}
+
+	public void setWorth(int worth) {
+		this.worth = worth;
 	}
 }

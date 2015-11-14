@@ -13,6 +13,7 @@ public class Shooter extends Enemy {
 		this.setHealth(2);
 		this.setSpeed(0.5f);
 		this.setMaxFireRateTime(1);
+		setWorth(500);
 	}
 	
 	public void update(float deltaTime) {
