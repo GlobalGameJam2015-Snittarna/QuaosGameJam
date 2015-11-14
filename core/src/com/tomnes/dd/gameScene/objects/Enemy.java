@@ -35,7 +35,7 @@ public abstract class Enemy extends Killable {
 		
 		if(!inRoom) {
 			this.moveTowardsTarget(deltaTime);
-			System.out.println(this.getPosition().sub(target).len());
+			//System.out.println(this.getPosition().sub(target).len());
 			if(this.getPosition().sub(target).len() <= 4f) {
 				inRoom = true;
 			}

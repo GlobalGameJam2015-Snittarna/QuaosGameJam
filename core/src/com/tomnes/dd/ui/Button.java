@@ -11,6 +11,8 @@ public class Button extends UiElement {
 	
 	private GlyphLayout layout;
 	
+	boolean isPressed;
+	
 	public Button(String text, Rectangle area) {
 		super(area);
 		keepGrabbed = false;
@@ -18,13 +20,23 @@ public class Button extends UiElement {
 		layout = new GlyphLayout(AssetManager.font, text);
 	}
 
-	public boolean isPressed() {
-		return super.isPressed();
+	public boolean isPressed2() {
+		return isPressed;
+	}
+	
+	public void onClick() {
+		System.out.println("clicked");
+		isPressed = true;
+	}
+	
+	public void onDrag() {
+		System.out.println("dragged");
+		isPressed = false;
 	}
 	
 	public void draw(SpriteBatch batch) {
 		AssetManager.font.draw(batch, text, getArea().getX() + getArea().getWidth() / 2 - layout.width / 2, getArea().getY() + getArea().getHeight() - layout.height / 2);
-		batch.draw(AssetManager.getTexture("box"), getArea().getX(), getArea().getY(), getArea().getWidth(), getArea().getHeight());
+		//batch.draw(AssetManager.getTexture("box"), getArea().getX(), getArea().getY(), getArea().getWidth(), getArea().getHeight());
 	}
 
 }

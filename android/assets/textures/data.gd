@@ -12,11 +12,11 @@ textures: {
 	
 	bullet: 261, 129, 8, 8;
 	
-	laserIcon: 1, 649, 32, 32;
-	granadeIcon: 34, 649, 32, 32;
-	bulletIcon: 67, 649, 32, 32;
+	powerupShotTypeLaser: 1, 649, 32, 32;
+	powerupShotTypeGrenade: 34, 649, 32, 32;
+	powerupShotTypeBullet: 67, 649, 32, 32;
 	
-	oneShotIcon: 1, 682, 32, 32;
-	twoShotIcon: 34, 682, 32, 32;
-	threeShotIcon: 67, 682, 32, 32;
+	powerupShootStyleRegular: 1, 682, 32, 32;
+	powerupShootStyleDouble: 34, 682, 32, 32;
+	powerupShootStyleTriple: 67, 682, 32, 32;
 }

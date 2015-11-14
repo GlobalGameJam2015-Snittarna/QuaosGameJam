@@ -20,7 +20,7 @@ public class Spawner extends Enemy {
 		attack(deltaTime);
 		shoot(deltaTime);
 		
-		System.out.println(this.getFireRateTime());
+		//System.out.println(this.getFireRateTime());
 		
 		if(isInRoom()) {
 			for(GameObject g : getScene().getObjects()) {

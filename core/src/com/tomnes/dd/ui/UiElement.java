@@ -96,6 +96,7 @@ public abstract class UiElement {
 			
 		} else {
 			isPressed = Input.areaIsClicked(area);
+			if (this instanceof Button && false) System.out.println(isPressed);
 		}
 		
 		isHover   = Input.intersectingWith(area);

@@ -60,7 +60,7 @@ public class Player extends Killable {
 		}*/
 		
 		intersectedPowerup = intersectsPowerup();
-		if (intersectedPowerup != null && powerupPickup.isPressed()) {
+		if (intersectedPowerup != null && powerupPickup.isPressed2()) {
 			getScene().removeObject(intersectedPowerup);
 			if (intersectedPowerup.getType() == Type.ShootStyle) {
 				this.shootStyle = intersectedPowerup.getShootStyle();
