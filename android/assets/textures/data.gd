@@ -15,6 +15,8 @@ textures: {
 	
 	explosion: 1, 259, 64, 64;
 	
+	doors: 776, 128, 450, 800;
+	
 	powerupShotTypeLaser: 1, 649, 32, 32;
 	powerupShotTypeGrenade: 34, 649, 32, 32;
 	powerupShotTypeBullet: 67, 649, 32, 32;
