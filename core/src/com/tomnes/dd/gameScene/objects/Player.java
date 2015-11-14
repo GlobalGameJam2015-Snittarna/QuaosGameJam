@@ -82,9 +82,9 @@ public class Player extends Killable {
 		for (int i = 0; i < shots; i++) {
 			float da = (i - shots / 2) * .25f;
 			switch (shotType) {
-			case Bullet: getScene().addObject(new Bullet(getPosition().cpy().add(getSize().cpy().scl(.1f, .2f)), angle + da, false)); break;
-			case Grenade: getScene().addObject(new Bullet(getPosition().cpy().add(getSize().cpy().scl(.1f, .2f)), angle + da, false)); break;
-			case Laser: getScene().addObject(new Laser(getPosition().cpy().add(getSize().cpy().scl(.1f, .2f)), angle + da, false)); break;
+			case Bullet: getScene().addObject(new Bullet(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle + da, false)); break;
+			case Grenade: getScene().addObject(new Granade(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle + da, 1, 1, false)); break;
+			case Laser: getScene().addObject(new Laser(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle + da, false)); break;
 			}
 		}
 	}

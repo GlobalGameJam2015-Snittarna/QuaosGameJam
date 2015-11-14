@@ -59,6 +59,11 @@ public abstract class Enemy extends Killable {
 		}
 	}
 	
+	public void onDeath() {
+		super.onDeath();
+		getScene().addObject(new Explosion(this.getPosition().add(new Vector2(-0.5f, -0.5f)), false));
+	}
+	
 	public void onShoot() {
 		
 	}

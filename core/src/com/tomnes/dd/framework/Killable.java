@@ -41,6 +41,7 @@ public abstract class Killable extends GameObject {
 						if(k instanceof Enemy) { 
 							if(k.getHitbox().collision(g.getHitbox())) {
 								((Enemy) k).onHit();
+								((Projectile) g).onHit();
 								g.getScene().removeObject(g);
 							}
 						}

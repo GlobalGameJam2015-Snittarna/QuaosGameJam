@@ -6,6 +6,7 @@ import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.GameObject;
 import com.tomnes.dd.framework.Scene;
 import com.tomnes.dd.gameScene.objects.Enemy;
+import com.tomnes.dd.gameScene.objects.Explosion;
 import com.tomnes.dd.gameScene.objects.Player;
 import com.tomnes.dd.gameScene.objects.Shooter;
 import com.tomnes.dd.gameScene.objects.Spawner;
@@ -23,8 +24,6 @@ public class GameScene extends Scene {
 		super();
 		room = new Room();
 		addObject(new Player());
-		addObject(new Spawner(new Vector2(0, 0)));
-		
 		enemySpawnManager = new EnemySpawnManager();
 	}
 	

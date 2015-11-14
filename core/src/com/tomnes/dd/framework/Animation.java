@@ -77,6 +77,10 @@ public class Animation extends Sprite {
 		this.currentFrame = currentFrame;
 	}
 	
+	public int getCurrentFrame() {
+		return this.currentFrame;
+	}
+	
 	public void setAnimationTime(float animationTime) {
 		this.animationTime = animationTime;
 	}
