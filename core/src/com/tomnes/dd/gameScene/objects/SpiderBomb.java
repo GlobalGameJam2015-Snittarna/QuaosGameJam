@@ -11,7 +11,7 @@ public class SpiderBomb extends Enemy {
 		setHealth(2);
 		this.setSpeed(1);
 		this.getSprite().setAnimation(1, 4, 0, false);
-		setWorth(100);
+		setWorth(222);
 	}
 	
 	public void update(float deltaTime) {

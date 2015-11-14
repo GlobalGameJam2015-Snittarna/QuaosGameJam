@@ -56,8 +56,6 @@ public class Room {
 		
 		levelCleared = (completed && scene.enemyCount() <= 0);
 		
-		System.out.println(this.levelCleared);
-		
 		if(completed && scene.enemyCount() <= 0) {
 			for(GameObject g : scene.getObjects()) {
 				if(g instanceof Player) {
@@ -85,7 +83,7 @@ public class Room {
 	
 	public void restart(GameScene scene) {
 		completed = false;
-		difficulty += 0.3f;
+		difficulty += 0.9f;
 		scene.getEnemySpawnManager().setNewMaxSpawnTimes(scene);
 		for(GameObject g : scene.getObjects()) {
 			if(g instanceof Enemy) {

@@ -49,12 +49,9 @@ public class Player extends Killable {
 		shootInput = new ShootCotroll(new Rectangle(125, -725, 250, 250), this);
 		moveInput = new Joystick(new Rectangle(-375, -725, 250, 250));
 		powerupPickup = new Button("Pick up", new Rectangle(-75, -420, 150, 50));
-<<<<<<< HEAD
 		hpBar = new Bar(new Rectangle(-150, 740, 300, 50), AssetManager.getTexture("hp-bar"));
 		getSprite().setAnimation(0.5f, 4, 0, false);
-=======
 		hpBar = new Bar(new Rectangle(-150, 670, 300, 50), AssetManager.getTexture("hp-bar"));
->>>>>>> origin/master
 	}
 
 	public void update(float dt) {

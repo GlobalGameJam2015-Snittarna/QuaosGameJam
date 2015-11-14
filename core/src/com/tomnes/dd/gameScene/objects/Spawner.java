@@ -13,7 +13,7 @@ public class Spawner extends Enemy {
 		setHealth(4);
 		this.setMaxFireRateTime(2);
 		this.setSpeed(0.3f);
-		setWorth(1000);
+		setWorth(6666);
 	}
 	
 	public void update(float deltaTime) {

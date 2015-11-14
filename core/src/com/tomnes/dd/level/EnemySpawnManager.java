@@ -44,7 +44,7 @@ public class EnemySpawnManager {
 	
 	public void setNewMaxSpawnTimes(GameScene gameScene) {
 		for(int i = 0; i < maxEnemySpawnTime.length; i++) {
-			maxEnemySpawnTime[i] = (4+i-gameScene.getRoom().getDifficulty() >= 0) ? 2+i-gameScene.getRoom().getDifficulty() : 0.1f;
+			maxEnemySpawnTime[i] = (5+i-gameScene.getRoom().getDifficulty() >= 1) ? 5+i-gameScene.getRoom().getDifficulty() : 0.1f;
 		}
 	}
 	
