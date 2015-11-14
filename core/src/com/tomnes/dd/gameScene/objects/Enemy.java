@@ -83,7 +83,7 @@ public abstract class Enemy extends Killable {
 	}
 	
 	public void moveTowardsTarget(float deltaTime) {
-		movmentAngle = (float)Math.atan2(getPosition().y-target.y, getPosition().x-target.x);
+		movmentAngle = (float)Math.atan2(target.y-getPosition().y, target.x-getPosition().x);
 		setPosition(getPosition().cpy().add(new Vector2(velocity.x*deltaTime, velocity.y*deltaTime)));
 	}
 	

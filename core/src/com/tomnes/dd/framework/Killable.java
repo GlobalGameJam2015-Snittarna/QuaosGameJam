@@ -2,6 +2,9 @@ package com.tomnes.dd.framework;
 
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.framework.Animation;
+import com.tomnes.dd.gameScene.objects.Enemy;
+import com.tomnes.dd.gameScene.objects.Player;
+import com.tomnes.dd.gameScene.objects.Projectile;
 
 public abstract class Killable extends GameObject {
 	private float health;
@@ -19,6 +22,28 @@ public abstract class Killable extends GameObject {
 	
 	public void update(float deltaTime) {
 		if(health <= 0) onDeath();
+		
+		for(GameObject g : getScene().getObjects()) {
+			if(g instanceof Projectile) {
+				for (GameObject k : getScene().getObjects()) {
+					if(((Projectile) g).hitsPlayer()) {
+						if(k instanceof Player) { 
+							if(k.getHitbox().collision(g.getHitbox())) {
+								((Player) k).setHealth(((Player) k).getHealth()-1);
+								g.getScene().removeObject(g);
+							}
+						}
+					} else {
+						if(k instanceof Enemy) { 
+							if(k.getHitbox().collision(g.getHitbox())) {
+								((Enemy) k).setHealth(((Enemy) k).getHealth()-1);
+								g.getScene().removeObject(g);
+							}
+						}
+					}
+				}
+			}
+		}
 		
 		if(hitTime > 0) {
 			hitTime += 0.1 * deltaTime;
