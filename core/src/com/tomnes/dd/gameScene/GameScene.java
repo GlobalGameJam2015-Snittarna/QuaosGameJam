@@ -3,7 +3,9 @@ package com.tomnes.dd.gameScene;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.AssetManager;
+import com.tomnes.dd.framework.GameObject;
 import com.tomnes.dd.framework.Scene;
+import com.tomnes.dd.gameScene.objects.Enemy;
 import com.tomnes.dd.gameScene.objects.Player;
 import com.tomnes.dd.gameScene.objects.Shooter;
 import com.tomnes.dd.gameScene.objects.Spawner;
@@ -43,6 +45,18 @@ public class GameScene extends Scene {
 	
 	public Room getRoom() {
 		return room;
+	}
+	
+	public int enemyCount() {
+		int count = 0;
+		
+		for(GameObject g : getObjects()) {
+			if(g instanceof Enemy) {
+				count += 1;
+			}
+		}
+		
+		return count;
 	}
 	
 	public EnemySpawnManager getEnemySpawnManager() {
