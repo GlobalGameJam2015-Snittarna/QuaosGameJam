@@ -13,6 +13,7 @@ import com.tomnes.dd.framework.Killable;
 import com.tomnes.dd.framework.Rectangle;
 import com.tomnes.dd.gameScene.GameScene;
 import com.tomnes.dd.gameScene.objects.Powerup.Type;
+import com.tomnes.dd.ui.Bar;
 import com.tomnes.dd.ui.Button;
 import com.tomnes.dd.ui.Joystick;
 import com.tomnes.dd.ui.ShootCotroll;
@@ -24,6 +25,7 @@ public class Player extends Killable {
 	//private Joystick shootInput;
 	private ShootCotroll shootInput;
 	private Button powerupPickup;
+	private Bar hpBar;
 	
 	private float firerate = .5f;
 	private float firerateCounter;
@@ -45,6 +47,7 @@ public class Player extends Killable {
 		shootInput = new ShootCotroll(new Rectangle(125, -725, 250, 250), this);
 		moveInput = new Joystick(new Rectangle(-375, -725, 250, 250));
 		powerupPickup = new Button("Pick up", new Rectangle(-75, -600, 150, 100));
+		hpBar = new Bar(new Rectangle(-150, 740, 300, 50), AssetManager.getTexture("hp-bar"));
 	}
 
 	public void update(float dt) {
@@ -75,6 +78,8 @@ public class Player extends Killable {
 				this.shotType = intersectedPowerup.getShotType();
 			}
 		}
+		
+		hpBar.val = getHealth() / getMaxHealth();
 		
 		super.update(dt);
 	}
@@ -120,6 +125,7 @@ public class Player extends Killable {
 		
 		moveInput.draw(batch);
 		shootInput.draw(batch);
+		hpBar.draw(batch);
 		if (intersectedPowerup != null) {
 			intersectedPowerup.drawName(batch);
 			powerupPickup.draw(batch);

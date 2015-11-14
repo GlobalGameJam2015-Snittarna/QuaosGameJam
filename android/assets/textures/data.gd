@@ -22,4 +22,7 @@ textures: {
 	powerupShootStyleRegular: 1, 682, 32, 32;
 	powerupShootStyleDouble: 34, 682, 32, 32;
 	powerupShootStyleTriple: 67, 682, 32, 32;
+	
+	bar-background: 179, 0, 1, 1;
+	hp-bar: 179, 1, 1, 1;
 }
