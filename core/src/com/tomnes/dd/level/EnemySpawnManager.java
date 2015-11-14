@@ -39,12 +39,13 @@ public class EnemySpawnManager {
 		
 		for(int i = 0; i < maxEnemySpawnTime.length; i++) {
 			maxEnemySpawnTime[0]  = 2;
+			maxEnemySpawnTime[1]  = 10;
 		}
 	}
 	
 	public void setNewMaxSpawnTimes(GameScene gameScene) {
 		for(int i = 0; i < maxEnemySpawnTime.length; i++) {
-			maxEnemySpawnTime[i] = (5+i-gameScene.getRoom().getDifficulty() >= 1) ? 5+i-gameScene.getRoom().getDifficulty() : 0.1f;
+			maxEnemySpawnTime[i] = (10+i-gameScene.getRoom().getDifficulty() >= 1) ? 5+i-gameScene.getRoom().getDifficulty() : 0.1f;
 		}
 		maxEnemySpawnTime[0]  = 2;
 	}
@@ -58,9 +59,6 @@ public class EnemySpawnManager {
 			if(enemySpawnTime[i] >= maxEnemySpawnTime[i]) {
 				if(gameScene.getRoom().getDifficulty() >= 2 && i > 0) {
 					//gameScene.getRoom().decresseEnemiesToSpawn();
-					if(i == 1) {
-						gameScene.addObject(new Shooter(getSpawnPosition(random.nextInt(4))));
-					}
 					if(i == 2) {
 						gameScene.addObject(new Spawner(getSpawnPosition(random.nextInt(4))));
 					}
@@ -68,6 +66,9 @@ public class EnemySpawnManager {
 				if(i <= 0) {
 					gameScene.addObject(new SpiderBomb(getSpawnPosition(random.nextInt(4))));
 					gameScene.getRoom().decresseEnemiesToSpawn();
+				}
+				if(i == 1) {
+					gameScene.addObject(new Shooter(getSpawnPosition(random.nextInt(4))));
 				}
 				enemySpawnTime[i] = 0;
 			}

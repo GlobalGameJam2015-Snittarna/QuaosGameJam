@@ -18,7 +18,7 @@ public abstract class Killable extends GameObject {
 		super(position, size, sprite);
 		this.maxHealth = maxHealth;
 		this.health = this.maxHealth;
-		maxHitTime = 1;
+		maxHitTime = 0.5f;
 		// TODO Auto-generated constructor stub
 	}
 	
