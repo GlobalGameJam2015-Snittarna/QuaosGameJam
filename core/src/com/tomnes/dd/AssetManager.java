@@ -17,7 +17,7 @@ public abstract class AssetManager {
 	public static BitmapFont font;
 	
 	public static void load() {
-		FreeTypeFontGenerator g = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Moms_typewriter.ttf"));
+		FreeTypeFontGenerator g = new FreeTypeFontGenerator(Gdx.files.internal("fonts/ARIAL.ttf"));
 		FreeTypeFontParameter param = new FreeTypeFontParameter();
 		param.size = 45;
 		font = g.generateFont(param);
