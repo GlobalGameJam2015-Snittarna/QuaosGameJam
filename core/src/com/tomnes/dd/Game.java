@@ -12,10 +12,10 @@ import com.tomnes.dd.utils.Input;
 public class Game extends ApplicationAdapter {
 	SpriteBatch batch, uiBatch;
 	
-	private Scene currentScene;
+	private static Scene currentScene;
 	
-	public Scene getScene() { return currentScene; }
-	public void setScene(Scene scene) {
+	public static Scene getScene() { return currentScene; }
+	public static void setScene(Scene scene) {
 		currentScene.onPause();
 		currentScene = scene;
 		currentScene.onResume();

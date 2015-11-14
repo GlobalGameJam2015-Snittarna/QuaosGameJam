@@ -1,9 +1,12 @@
 package com.tomnes.dd.gameScene.objects;
 
+import menuScenes.GameOverScene;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.AssetManager;
+import com.tomnes.dd.Game;
 import com.tomnes.dd.framework.Animation;
 import com.tomnes.dd.framework.GameObject;
 import com.tomnes.dd.framework.Killable;
@@ -70,6 +73,11 @@ public class Player extends Killable {
 		}
 		
 		super.update(dt);
+	}
+	
+	public void onDeath() {
+		Game.setScene(new GameOverScene());
+		super.onDeath();
 	}
 	
 	public void shoot(float angle) {
