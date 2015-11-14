@@ -1,5 +1,76 @@
 package com.tomnes.dd.level;
 
-public class EnemySpawnManager {
+import java.util.Random;
 
+import com.badlogic.gdx.math.Vector2;
+import com.tomnes.dd.framework.Scene;
+import com.tomnes.dd.gameScene.GameScene;
+import com.tomnes.dd.gameScene.objects.SpiderBomb;
+
+public class EnemySpawnManager {
+	enum EnemyTypes { 
+		RUNNER(0), SHOOTER(1), SPAWNER(2);
+		private int value; 
+		
+		EnemyTypes(int value) {
+			this.value = value;
+		}
+		
+		public int getValue() {
+			return value;
+		}
+	};
+	
+	final int DOOR_LEFT = 0;
+	final int DOOR_UP = 1;
+	final int DOOR_RIGHT = 2;
+	final int DOOR_DOWN = 3;
+	
+	private float maxEnemySpawnTime[];
+	private float enemySpawnTime[];
+	
+	Random random;
+	
+	public EnemySpawnManager() {
+		maxEnemySpawnTime = new float[3];
+		enemySpawnTime = new float[3];
+		
+		maxEnemySpawnTime[EnemyTypes.RUNNER.getValue()] = 2;
+	}
+	
+	public void update(GameScene gameScene, float deltaTime) {
+		random = new Random();
+		
+		for(int i = 0; i < maxEnemySpawnTime.length; i++) {
+			enemySpawnTime[i] += 1 * deltaTime;
+			
+			if(enemySpawnTime[i] >= maxEnemySpawnTime[i]) {
+				if(gameScene.getRoom().getDifficulty() >= i/2 && i > 0) {
+					
+				}
+				if(i <= 0) {
+					gameScene.addObject(new SpiderBomb(getSpawnPosition(random.nextInt(4))));
+				}
+				enemySpawnTime[i] = 0;
+			}
+		}
+	}
+	
+	public Vector2 getSpawnPosition(int side) {
+		Vector2 position;
+		
+		if(side == DOOR_LEFT) {
+			position = new Vector2(-5, 0);
+		} else if(side == DOOR_RIGHT) {
+			position = new Vector2(5, 0);
+		} else if(side == DOOR_UP) {
+			position = new Vector2(0, 8);
+		} else if(side == DOOR_DOWN) {
+			position = new Vector2(0, -8);
+		} else {
+			position = new Vector2(0, 0);
+		}
+		
+		return position;
+	}
 }

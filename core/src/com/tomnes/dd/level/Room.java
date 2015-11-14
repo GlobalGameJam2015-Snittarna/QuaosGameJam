@@ -12,6 +12,8 @@ public class Room {
 	
 	private Vector2[] doors;
 	
+	private int maxEnemiesToSpawn;
+	
 	public Room() {
 		sprite =  new Animation(AssetManager.getTexture("room1"));
 		sprite.setSize(9, 16);
@@ -65,5 +67,13 @@ public class Room {
 	
 	public float getWallSize() {
 		return 0.36f;
+	}
+	
+	public void setMaxEnemiesToSpawn(int maxEnemiesToSpawn) {
+		this.maxEnemiesToSpawn = maxEnemiesToSpawn;
+	}
+	
+	public int getMaxEnemiesToSpawn() {
+		return maxEnemiesToSpawn;
 	}
 }
