@@ -47,7 +47,7 @@ public abstract class Enemy extends Killable {
 			if(g instanceof Player) {
 				if(g.getHitbox().collision(getHitbox())) {
 					((Player) g).setHealth(((Player) g).getHealth()-1);
-					((Player) g).onHit();
+					((Player) g).setHitTime(0.1f);
 					setHealth(0);
 				}
 			}
