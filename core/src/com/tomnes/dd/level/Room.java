@@ -1,6 +1,9 @@
 package com.tomnes.dd.level;
 
+import java.util.Random;
+
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.AssetManager;
@@ -10,6 +13,7 @@ import com.tomnes.dd.framework.Rectangle;
 import com.tomnes.dd.framework.Scene;
 import com.tomnes.dd.gameScene.GameScene;
 import com.tomnes.dd.gameScene.objects.Enemy;
+import com.tomnes.dd.gameScene.objects.Explosion;
 import com.tomnes.dd.gameScene.objects.Player;
 import com.tomnes.dd.gameScene.objects.Powerup;
 import com.tomnes.dd.gameScene.objects.Projectile;
@@ -30,6 +34,8 @@ public class Room {
 	
 	private boolean doorsAreOpen;
 	
+	private Color color;
+	
 	public Room() {
 		sprite =  new Animation(AssetManager.getTexture("room1"));
 		doorSprite  = new Animation(AssetManager.getTexture("doors"));
@@ -47,6 +53,14 @@ public class Room {
 		doors[3] = new Rectangle(0, -7, 1, 0.3f);
 		
 		this.maxEnemiesToSpawn = (int)(this.difficulty+1)*10;
+		
+		randomNewColor();
+	}
+	
+	public void randomNewColor() {
+		Random random = new Random();
+		color = new Color(random.nextFloat(), random.nextFloat(), random.nextFloat(), 1);
+		sprite.setColor(color);
 	}
 	
 	public void update(GameScene scene) {
@@ -96,8 +110,13 @@ public class Room {
 			if(g instanceof Powerup) {
 				scene.removeObject(g);
 			}
+			
+			if(g instanceof Explosion) {
+				scene.removeObject(g);
+			}
 		}
 		this.maxEnemiesToSpawn = (int)(this.difficulty+1)*10;
+		randomNewColor();
 	}
 	
 	public float getDifficulty() {
