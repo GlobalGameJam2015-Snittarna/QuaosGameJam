@@ -18,6 +18,7 @@ public class Room {
 	private float difficulty;
 	
 	private Animation sprite;
+	private Animation doorSprite;
 	
 	private Rectangle[] doors;
 	
@@ -25,11 +26,18 @@ public class Room {
 	
 	private boolean completed;
 	
+	private boolean levelCleared;
+	
+	private boolean doorsAreOpen;
+	
 	public Room() {
 		sprite =  new Animation(AssetManager.getTexture("room1"));
+		doorSprite  = new Animation(AssetManager.getTexture("doors"));
 		sprite.setSize(9, 16);
+		doorSprite.setSize(9, 16);
 		
 		sprite.setPosition(-4.5f, -8);
+		doorSprite.setPosition(-4.5f, -8);
 		
 		doors = new Rectangle[4];
 		
@@ -45,6 +53,10 @@ public class Room {
 		if(this.maxEnemiesToSpawn <= 0) {
 			completed = true;
 		}
+		
+		levelCleared = (completed && scene.enemyCount() <= 0);
+		
+		System.out.println(this.levelCleared);
 		
 		if(completed && scene.enemyCount() <= 0) {
 			for(GameObject g : scene.getObjects()) {
@@ -150,5 +162,17 @@ public class Room {
 	
 	public boolean isCompleted() {
 		return completed;
+	}
+	
+	public boolean isDoorsAreOpen() {
+		return doorsAreOpen;
+	}
+
+	public void setDoorsAreOpen(boolean doorsAreOpen) {
+		this.doorsAreOpen = doorsAreOpen;
+	}
+	
+	public boolean isLevelCleared() {
+		return levelCleared;
 	}
 }
