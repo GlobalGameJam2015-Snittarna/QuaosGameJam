@@ -12,6 +12,7 @@ public abstract class Killable extends GameObject {
 	
 	private float hitTime;
 	private float maxHitTime;
+	private float damegeToTake;
 	
 	public Killable(Vector2 position, Vector2 size, Animation sprite, float maxHealth) {
 		super(position, size, sprite);
@@ -26,6 +27,7 @@ public abstract class Killable extends GameObject {
 		
 		for(GameObject g : getScene().getObjects()) {
 			if(g instanceof Projectile) {
+				damegeToTake = ((Projectile) g).getDamege();
 				for (GameObject k : getScene().getObjects()) {
 					if(((Projectile) g).hitsPlayer()) {
 						if(k instanceof Player) { 
@@ -65,7 +67,7 @@ public abstract class Killable extends GameObject {
 	
 	public void onHit() {
 		if (hitTime <= 0) {
-			health -= 1;
+			health -= this.damegeToTake;
 			hitTime = 0.1f;
 			getSprite().setColor(1, 0, 0, 1);
 		}

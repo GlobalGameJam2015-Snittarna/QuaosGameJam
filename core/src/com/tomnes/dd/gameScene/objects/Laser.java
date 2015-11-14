@@ -7,7 +7,7 @@ import com.tomnes.dd.framework.Animation;
 public class Laser extends Projectile {
 
 	public Laser(Vector2 position, float angle, boolean hitsPlayer) {
-		super(position, new Vector2(.2f, .2f), new Animation(AssetManager.getTexture("laser")), angle, 8, hitsPlayer);
+		super(position, new Vector2(.2f, .2f), new Animation(AssetManager.getTexture("laser")), angle, 8, 4, hitsPlayer);
 		// TODO Auto-generated constructor stub
 	}
 
