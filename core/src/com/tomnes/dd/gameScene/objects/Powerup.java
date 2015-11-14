@@ -37,18 +37,18 @@ public class Powerup extends GameObject {
 	private String name;
 	
 	public Powerup(Vector2 position) {
-		super(position, new Vector2(.3f, .3f), new Animation(AssetManager.getTexture("error")));
+		super(position, new Vector2(.4f, .4f), new Animation(AssetManager.getTexture("error")));
 	
 		if (MathUtils.randomBoolean()) {
 			type = Type.ShotType;
 			shotType = ShotType.values()[MathUtils.random(2)];
 			setSprite(AssetManager.getTexture("powerup" + type + shotType));
-			name = "Bullet type:\n" + shotType.name();
+			name = shotType.name();
 		} else {
 			type = Type.ShootStyle;
 			shootStyle = ShootStyle.values()[MathUtils.random(1)];
 			setSprite(AssetManager.getTexture("powerup" + type + shootStyle));
-			name = "Shooting style:\n" + shootStyle.name();
+			name = shootStyle.name() + " shot";
 		}
 		
 	}

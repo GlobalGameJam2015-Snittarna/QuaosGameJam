@@ -90,6 +90,9 @@ public class Player extends Killable {
 	}
 	
 	public void drawUi(SpriteBatch batch) {
+		batch.draw(AssetManager.getTexture("powerupShootStyle" + shootStyle), -450, 700, 100, 100);
+		batch.draw(AssetManager.getTexture("powerupShotType" + shotType), 350, 700, 100, 100);
+		
 		moveInput.draw(batch);
 		shootInput.draw(batch);
 		if (intersectedPowerup != null) {
