@@ -26,6 +26,8 @@ public class Room {
 	
 	private boolean completed;
 	
+	private boolean levelCleared;
+	
 	private boolean doorsAreOpen;
 	
 	public Room() {
@@ -51,6 +53,10 @@ public class Room {
 		if(this.maxEnemiesToSpawn <= 0) {
 			completed = true;
 		}
+		
+		levelCleared = (completed && scene.enemyCount() <= 0);
+		
+		System.out.println(this.levelCleared);
 		
 		if(completed && scene.enemyCount() <= 0) {
 			for(GameObject g : scene.getObjects()) {
@@ -164,5 +170,9 @@ public class Room {
 
 	public void setDoorsAreOpen(boolean doorsAreOpen) {
 		this.doorsAreOpen = doorsAreOpen;
+	}
+	
+	public boolean isLevelCleared() {
+		return levelCleared;
 	}
 }
