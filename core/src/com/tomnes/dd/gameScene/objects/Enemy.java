@@ -1,5 +1,6 @@
 package com.tomnes.dd.gameScene.objects;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.framework.Animation;
 import com.tomnes.dd.framework.GameObject;
@@ -82,6 +83,7 @@ public abstract class Enemy extends Killable {
 	public void onDeath() {
 		super.onDeath();
 		getScene().addObject(new Explosion(this.getPosition().add(new Vector2(-0.5f, -0.5f)), false));
+		if (MathUtils.randomBoolean(.2f)) getScene().addObject(new Powerup(getPosition()));
 	}
 	
 	public void onShoot() {

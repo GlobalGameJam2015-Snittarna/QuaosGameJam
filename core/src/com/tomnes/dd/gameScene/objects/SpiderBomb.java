@@ -19,9 +19,4 @@ public class SpiderBomb extends Enemy {
 		if(this.isInRoom()) this.moveTowardsPlayer(deltaTime);
 		getSprite().animate(deltaTime);
 	}
-	
-	public void onDeath() {
-		getScene().addObject(new Powerup(getPosition()));
-		super.onDeath();
-	}
 }
