@@ -46,7 +46,7 @@ public class Powerup extends GameObject {
 			name = shotType.name();
 		} else {
 			type = Type.ShootStyle;
-			shootStyle = ShootStyle.values()[MathUtils.random(1)];
+			shootStyle = ShootStyle.values()[MathUtils.random(2)];
 			setSprite(AssetManager.getTexture("powerup" + type + shootStyle));
 			name = shootStyle.name() + " shot";
 		}

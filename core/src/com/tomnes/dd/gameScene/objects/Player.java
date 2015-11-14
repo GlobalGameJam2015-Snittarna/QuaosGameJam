@@ -39,7 +39,7 @@ public class Player extends Killable {
 		//shootInput = new Joystick(new Rectangle(125, -725, 250, 250));
 		shootInput = new ShootCotroll(new Rectangle(125, -725, 250, 250), this);
 		moveInput = new Joystick(new Rectangle(-375, -725, 250, 250));
-		powerupPickup = new Button("Pick up", new Rectangle(-125, -600, 250, 100));
+		powerupPickup = new Button("Pick up", new Rectangle(-75, -600, 150, 100));
 	}
 
 	public void update(float dt) {
@@ -73,10 +73,19 @@ public class Player extends Killable {
 	}
 	
 	public void shoot(float angle) {
-		switch (shotType) {
-		case Bullet: getScene().addObject(new Bullet(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle, false)); break;
-		case Grenade: getScene().addObject(new Bullet(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle, false)); break;
-		case Laser: getScene().addObject(new Laser(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle, false)); break;
+		int shots = 1;
+		switch (shootStyle) {
+		case Regular: shots = 1; break;
+		case Double: shots = 2; break;
+		case Triple: shots = 3; break;
+		}
+		for (int i = 0; i < shots; i++) {
+			float da = (i - shots / 2) * .25f;
+			switch (shotType) {
+			case Bullet: getScene().addObject(new Bullet(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle + da, false)); break;
+			case Grenade: getScene().addObject(new Bullet(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle + da, false)); break;
+			case Laser: getScene().addObject(new Laser(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle + da, false)); break;
+			}
 		}
 	}
 	
