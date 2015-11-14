@@ -33,7 +33,7 @@ public class Player extends Killable {
 		}
 		
 		if (shootInput.isPressed()) {
-			getScene().addObject(new Bullet(getPosition(), shootInput.getAngle(), 4));
+			getScene().addObject(new Bullet(getPosition(), shootInput.getAngle(), 4, false));
 		}
 		
 		super.update(dt);

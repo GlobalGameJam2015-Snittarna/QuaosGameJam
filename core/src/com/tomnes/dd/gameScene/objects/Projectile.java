@@ -11,10 +11,17 @@ public abstract class Projectile extends GameObject {
 
 	private float angle, speed;
 	
-	public Projectile(Vector2 position, Vector2 size, Animation sprite, float angle, float speed) {
+	private boolean hitsPlayer;
+	
+	public Projectile(Vector2 position, Vector2 size, Animation sprite, float angle, float speed, boolean hitsPlayer) {
 		super(position, size, sprite);
 		this.angle = angle;
 		this.speed = speed;
+		this.hitsPlayer = hitsPlayer;
+	}
+	
+	public boolean  hitsPlayer() {
+		return hitsPlayer;
 	}
 	
 	public void update(float dt) {
@@ -31,7 +38,6 @@ public abstract class Projectile extends GameObject {
 	
 	public void onHitWall() {
 		getScene().removeObject(this);
-		System.out.println("hit wall");
 	}
 	
 	public void draw(SpriteBatch batch) {
