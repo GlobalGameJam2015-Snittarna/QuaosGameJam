@@ -33,6 +33,16 @@ public abstract class Enemy extends Killable {
 		
 		attack(deltaTime);
 		
+		for(GameObject g : getScene().getObjects()) {
+			if(g instanceof Player) {
+				if(g.getHitbox().collision(getHitbox())) {
+					((Player) g).setHealth(((Player) g).getHealth()-1);
+					((Player) g).onHit();
+					setHealth(0);
+				}
+			}
+		}
+		
 		if(!inRoom) {
 			this.moveTowardsTarget(deltaTime);
 			//System.out.println(this.getPosition().sub(target).len());

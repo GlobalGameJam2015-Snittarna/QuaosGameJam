@@ -11,6 +11,8 @@ import com.tomnes.dd.framework.Scene;
 import com.tomnes.dd.gameScene.GameScene;
 import com.tomnes.dd.gameScene.objects.Enemy;
 import com.tomnes.dd.gameScene.objects.Player;
+import com.tomnes.dd.gameScene.objects.Powerup;
+import com.tomnes.dd.gameScene.objects.Projectile;
 
 public class Room {
 	private float difficulty;
@@ -75,6 +77,14 @@ public class Room {
 		scene.getEnemySpawnManager().setNewMaxSpawnTimes(scene);
 		for(GameObject g : scene.getObjects()) {
 			if(g instanceof Enemy) {
+				scene.removeObject(g);
+			}
+			
+			if(g instanceof Projectile) {
+				scene.removeObject(g);
+			}
+			
+			if(g instanceof Powerup) {
 				scene.removeObject(g);
 			}
 		}
