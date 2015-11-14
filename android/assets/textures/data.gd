@@ -1,6 +1,7 @@
 textures: {
 	error: 0, 0, 40, 22;
 	player: 1, 194, 32, 64;
+	playerLeft: 1, 129, 32, 64;
 	room1: 326, 128, 450, 800;
 	
 	spiderBomb: 1, 324, 64, 64;

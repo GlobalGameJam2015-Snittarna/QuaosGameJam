@@ -36,7 +36,9 @@ public class Player extends Killable {
 	private Powerup intersectedPowerup;
 	
 	private int score;
-
+	
+	private boolean flippedLeft;
+	
 	public Player() {
 		super(new Vector2(0, 0), new Vector2(.85f, 1.7f), new Animation(AssetManager.getTexture("player")), 10);
 
@@ -48,6 +50,7 @@ public class Player extends Killable {
 		moveInput = new Joystick(new Rectangle(-375, -725, 250, 250));
 		powerupPickup = new Button("Pick up", new Rectangle(-75, -420, 150, 50));
 		hpBar = new Bar(new Rectangle(-150, 740, 300, 50), AssetManager.getTexture("hp-bar"));
+		getSprite().setAnimation(0.5f, 4, 0, false);
 	}
 
 	public void update(float dt) {
@@ -60,6 +63,7 @@ public class Player extends Killable {
 		if (moveInput.isPressed()) {
 			float m = (moveInput.getMag() > .3f ? 1 : .3f);
 			move(MathUtils.cos(moveInput.getAngle()) * dt * speed * m, MathUtils.sin(moveInput.getAngle()) * dt * speed * m);
+			getSprite().animate(dt);
 		}
 		
 		/*if (shootInput.isPressed() && firerateCounter <= 0) {
@@ -76,7 +80,7 @@ public class Player extends Killable {
 				this.shotType = intersectedPowerup.getShotType();
 			}
 		}
-		
+	
 		hpBar.val = getHealth() / getMaxHealth();
 		
 		super.update(dt);
