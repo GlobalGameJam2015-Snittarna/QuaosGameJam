@@ -7,6 +7,7 @@ import java.util.Collections;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
@@ -20,6 +21,8 @@ public abstract class Scene {
 	
 	public OrthographicCamera getCamera() { return camera; }
 	public OrthographicCamera getUiCamera() { return uiCamera; }
+	
+	private float screenShake; // for both duration and intensity
 
 	public ArrayList<GameObject> getObjects() { return objects; }
 	
@@ -58,6 +61,15 @@ public abstract class Scene {
 		}
 		toAdd.clear();
 		toRemove.clear();
+	
+		if (screenShake > 0) {
+			screenShake -= deltaTime;
+			if (screenShake < 0) screenShake = 0;
+		}
+	}
+	
+	public void setScreenShake(float screenShake) {
+		this.screenShake = screenShake;
 	}
 	
 	public void onDepthChange() {
@@ -75,6 +87,11 @@ public abstract class Scene {
 	}
 	
 	public void draw(SpriteBatch batch) {
+		float ss = MathUtils.clamp(screenShake, 0, .2f);
+		
+		if (screenShake > 0) camera.position.set(new Vector3(ss * MathUtils.random(-1, 1), ss * MathUtils.random(-1, 1), 0));
+		else camera.position.set(new Vector3(0, 0, 0));
+		
 		for (GameObject g : objects) g.draw(batch);
 	}
 	

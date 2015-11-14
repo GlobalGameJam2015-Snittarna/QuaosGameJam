@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.Animation;
 import com.tomnes.dd.framework.GameObject;
+import com.tomnes.dd.framework.Scene;
 
 public class Explosion extends GameObject {
 	private boolean dangerous;
@@ -12,6 +13,11 @@ public class Explosion extends GameObject {
 		super(position, new Vector2(2, 2), new Animation(AssetManager.getTexture("explosion")));
 		getSprite().setAnimation(0.2f, 4, 0, false);
 		this.dangerous = dangerous;
+	}
+	
+	public void onAdd(Scene scene) {
+		scene.setScreenShake(.4f);
+		super.onAdd(scene);
 	}
 
 	public void update(float deltaTime) {
