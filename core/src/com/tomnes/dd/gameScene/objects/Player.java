@@ -65,6 +65,9 @@ public class Player extends Killable {
 			float m = (moveInput.getMag() > .3f ? 1 : .3f);
 			move(MathUtils.cos(moveInput.getAngle()) * dt * speed * m, MathUtils.sin(moveInput.getAngle()) * dt * speed * m);
 			getSprite().animate(dt);
+			
+			if (MathUtils.cos(moveInput.getAngle()) < 0) getSprite().setFlip(true, false);
+			else getSprite().setFlip(false, false);
 		}
 		
 		/*if (shootInput.isPressed() && firerateCounter <= 0) {
