@@ -6,17 +6,28 @@ import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.Scene;
 import com.tomnes.dd.gameScene.objects.Player;
 import com.tomnes.dd.gameScene.objects.SpiderBomb;
+import com.tomnes.dd.level.EnemySpawnManager;
 import com.tomnes.dd.level.Room;
 import com.tomnes.dd.utils.Input;
 
 public class GameScene extends Scene {
 	private Room room;
 	
+	private EnemySpawnManager enemySpawnManager; 
+	
 	public GameScene() {
 		super();
 		room = new Room();
 		addObject(new Player());
 		addObject(new SpiderBomb(new Vector2(0, 0)));
+		
+		enemySpawnManager = new EnemySpawnManager();
+	}
+	
+	public void update(float deltaTime) {
+		super.update(deltaTime);
+		if(!room.isCompleted()) enemySpawnManager.update(this, deltaTime);
+		room.update();
 	}
 	
 	public void drawUi(SpriteBatch batch) {		

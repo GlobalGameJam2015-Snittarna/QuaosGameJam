@@ -23,7 +23,7 @@ public abstract class Enemy extends Killable {
 	public Enemy(Vector2 position, Vector2 size, Animation sprite) {
 		super(position, size, sprite, 5);
 		
-		if(getPosition().x >= 4.5f) {
+		/*if(getPosition().x >= 4.5f) {
 			target = new Vector2(this.getPosition().x-3, this.getPosition().y);
 		}
 		else if(getPosition().x <= -4.5f) {
@@ -37,7 +37,9 @@ public abstract class Enemy extends Killable {
 		}
 		else {
 			inRoom = true;
-		}
+		} */
+		
+		target = new Vector2(0, 0);
 	}
 	
 	public void update(float deltaTime) {
@@ -49,8 +51,8 @@ public abstract class Enemy extends Killable {
 		
 		if(!inRoom) {
 			this.moveTowardsTarget(deltaTime);
-			System.out.println(this.getPosition());
-			if(this.getPosition().sub(target).len() <= 0.1f) {
+			System.out.println(this.getPosition().sub(target).len());
+			if(this.getPosition().sub(target).len() <= 4f) {
 				inRoom = true;
 			}
 		}

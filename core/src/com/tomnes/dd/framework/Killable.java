@@ -17,6 +17,7 @@ public abstract class Killable extends GameObject {
 		super(position, size, sprite);
 		this.maxHealth = maxHealth;
 		this.health = this.maxHealth;
+		maxHitTime = 1;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -29,14 +30,15 @@ public abstract class Killable extends GameObject {
 					if(((Projectile) g).hitsPlayer()) {
 						if(k instanceof Player) { 
 							if(k.getHitbox().collision(g.getHitbox())) {
-								((Player) k).setHealth(((Player) k).getHealth()-1);
+								//((Player) k).setHealth(((Player) k).getHealth()-1);
+								((Player) k).onHit();
 								g.getScene().removeObject(g);
 							}
 						}
 					} else {
 						if(k instanceof Enemy) { 
 							if(k.getHitbox().collision(g.getHitbox())) {
-								((Enemy) k).setHealth(((Enemy) k).getHealth()-1);
+								((Enemy) k).onHit();
 								g.getScene().removeObject(g);
 							}
 						}
@@ -46,7 +48,7 @@ public abstract class Killable extends GameObject {
 		}
 		
 		if(hitTime > 0) {
-			hitTime += 0.1 * deltaTime;
+			hitTime += 2 * deltaTime;
 			if(hitTime >= maxHitTime) {
 				hitTime = 0;
 				getSprite().setColor(1, 1, 1, 1);
@@ -62,8 +64,11 @@ public abstract class Killable extends GameObject {
 	}
 	
 	public void onHit() {
-		hitTime = 0.1f;
-		getSprite().setColor(1, 0, 0, 1);
+		if (hitTime <= 0) {
+			health -= 1;
+			hitTime = 0.1f;
+			getSprite().setColor(1, 0, 0, 1);
+		}
 	}
 	
 	public float getHealth() {

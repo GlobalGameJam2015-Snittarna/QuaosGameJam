@@ -8,14 +8,12 @@ public class SpiderBomb extends Enemy {
 
 	public SpiderBomb(Vector2 position) {
 		super(position, new Vector2(.8f, .8f), new Animation(new Animation(AssetManager.getTexture("spiderBomb"))));
-		setHealth(5);
+		setHealth(2);
 		this.setSpeed(1);
 	}
 	
 	public void update(float deltaTime) {
 		super.update(deltaTime);
-		//this.moveTowardsPlayer(deltaTime);
-		setTarget(new Vector2(0, 0));
-		this.moveTowardsTarget(deltaTime);
+		if(this.isInRoom()) this.moveTowardsPlayer(deltaTime);
 	}
 }

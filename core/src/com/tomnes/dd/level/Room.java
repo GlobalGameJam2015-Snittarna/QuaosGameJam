@@ -12,6 +12,10 @@ public class Room {
 	
 	private Vector2[] doors;
 	
+	private int maxEnemiesToSpawn;
+	
+	private boolean completed;
+	
 	public Room() {
 		sprite =  new Animation(AssetManager.getTexture("room1"));
 		sprite.setSize(9, 16);
@@ -24,6 +28,15 @@ public class Room {
 		doors[1] = Vector2.Zero;
 		doors[2] = Vector2.Zero;
 		doors[3] = Vector2.Zero;
+		
+		this.maxEnemiesToSpawn = (int)(this.difficulty+1)*10;
+	}
+	
+	public void update() {
+		System.out.println(maxEnemiesToSpawn);
+		if(this.maxEnemiesToSpawn <= 0) {
+			completed = true;
+		}
 	}
 	
 	public float getDifficulty() {
@@ -65,5 +78,25 @@ public class Room {
 	
 	public float getWallSize() {
 		return 0.36f;
+	}
+	
+	public void setMaxEnemiesToSpawn(int maxEnemiesToSpawn) {
+		this.maxEnemiesToSpawn = maxEnemiesToSpawn;
+	}
+	
+	public void decresseEnemiesToSpawn() {
+		this.maxEnemiesToSpawn -= 1;
+	}
+	
+	public int getMaxEnemiesToSpawn() {
+		return maxEnemiesToSpawn;
+	}
+	
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+	
+	public boolean isCompleted() {
+		return completed;
 	}
 }
