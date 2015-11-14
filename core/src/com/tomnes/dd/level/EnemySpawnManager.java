@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.framework.Scene;
 import com.tomnes.dd.gameScene.GameScene;
 import com.tomnes.dd.gameScene.objects.Shooter;
+import com.tomnes.dd.gameScene.objects.Spawner;
 import com.tomnes.dd.gameScene.objects.SpiderBomb;
 
 public class EnemySpawnManager {
@@ -53,13 +54,16 @@ public class EnemySpawnManager {
 		for(int i = 0; i < maxEnemySpawnTime.length; i++) {
 			enemySpawnTime[i] += 1 * deltaTime;
 			
-			System.out.println(enemySpawnTime[1] + " AYY LMAL");
+			//System.out.println(enemySpawnTime[1] + " AYY LMAL");
 			
 			if(enemySpawnTime[i] >= maxEnemySpawnTime[i]) {
 				if(gameScene.getRoom().getDifficulty() >= 2 && i > 0) {
 					//gameScene.getRoom().decresseEnemiesToSpawn();
 					if(i == 1) {
 						gameScene.addObject(new Shooter(getSpawnPosition(random.nextInt(4))));
+					}
+					if(i == 2) {
+						gameScene.addObject(new Spawner(getSpawnPosition(random.nextInt(4))));
 					}
 				}
 				if(i <= 0) {

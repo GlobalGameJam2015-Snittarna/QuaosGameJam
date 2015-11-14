@@ -29,8 +29,6 @@ public class Shooter extends Enemy {
 				}
 			}
 		}
-		
-		System.out.println(this.getFireRateTime());
 	}
 	
 	public void onShoot() {
