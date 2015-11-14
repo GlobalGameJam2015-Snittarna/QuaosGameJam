@@ -7,4 +7,6 @@ textures: {
 		
 	joystick-body: 40, 0, 96, 96;
 	joystick-center: 138, 0, 32, 32;
+	
+	bullet: 261, 129, 8, 8;
 }
