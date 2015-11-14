@@ -47,7 +47,7 @@ public class Player extends Killable {
 		shootInput = new ShootCotroll(new Rectangle(125, -725, 250, 250), this);
 		moveInput = new Joystick(new Rectangle(-375, -725, 250, 250));
 		powerupPickup = new Button("Pick up", new Rectangle(-75, -420, 150, 50));
-		hpBar = new Bar(new Rectangle(-150, 740, 300, 50), AssetManager.getTexture("hp-bar"));
+		hpBar = new Bar(new Rectangle(-150, 670, 300, 50), AssetManager.getTexture("hp-bar"));
 	}
 
 	public void update(float dt) {
@@ -124,11 +124,13 @@ public class Player extends Killable {
 		moveInput.draw(batch);
 		shootInput.draw(batch);
 		hpBar.draw(batch);
-		AssetManager.font.draw(batch, "Score: " + getScore(), -100, 600);
+		AssetManager.font.draw(batch, "Score: " + getScore(), -100, 650);
 		if (intersectedPowerup != null) {
 			intersectedPowerup.drawName(batch);
 			powerupPickup.draw(batch);
 		}
+		
+		if (((GameScene)getScene()).getRoom().isLevelCleared()) AssetManager.font.draw(batch, "Room cleared!\nChoose a path", -160, 50);
 	}
 	
 	public int getScore() {
