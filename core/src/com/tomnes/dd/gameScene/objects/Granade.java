@@ -6,8 +6,9 @@ import com.tomnes.dd.framework.Animation;
 
 public class Granade extends Projectile {
 
+	//  TODO: remove speed argument
 	public Granade(Vector2 position, float angle, float speed, float damege, boolean hitsPlayer) {
-		super(position, new Vector2(.2f, .2f), new Animation(AssetManager.getTexture("bullet")), angle, 4, 1, hitsPlayer);
+		super(position, new Vector2(.2f, .2f), new Animation(AssetManager.getTexture("bullet")), angle, 2, 1, hitsPlayer);
 		// TODO Auto-generated constructor stub
 	}
 	
