@@ -54,8 +54,6 @@ public class Room {
 			completed = true;
 		}
 		
-		levelCleared = (completed && scene.enemyCount() <= 0);
-		
 		if(completed && scene.enemyCount() <= 0) {
 			for(GameObject g : scene.getObjects()) {
 				if(g instanceof Player) {
@@ -79,6 +77,7 @@ public class Room {
 				}
 			}
 		}
+		levelCleared = (completed && scene.enemyCount() <= 0);
 	}
 	
 	public void restart(GameScene scene) {
