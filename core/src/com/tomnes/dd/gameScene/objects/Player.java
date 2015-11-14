@@ -16,6 +16,9 @@ public class Player extends Killable {
 	private Joystick moveInput;
 	private Joystick shootInput;
 	
+	private float firerate = .5f;
+	private float firerateCounter;
+	
 	public Player() {
 		super(new Vector2(0, 0), new Vector2(.85f, 1.7f), new Animation(AssetManager.getTexture("player")), 1);
 
@@ -27,13 +30,16 @@ public class Player extends Killable {
 		moveInput.update();
 		shootInput.update();
 		
+		firerateCounter -= dt;
+		
 		if (moveInput.isPressed()) {
 			float m = (moveInput.getMag() > .3f ? 1 : .3f);
 			move(MathUtils.cos(moveInput.getAngle()) * dt * speed * m, MathUtils.sin(moveInput.getAngle()) * dt * speed * m);
 		}
 		
-		if (shootInput.isPressed()) {
+		if (shootInput.isPressed() && firerateCounter <= 0) {
 			getScene().addObject(new Bullet(getPosition(), shootInput.getAngle(), 4, false));
+			firerateCounter = firerate;
 		}
 		
 		super.update(dt);
