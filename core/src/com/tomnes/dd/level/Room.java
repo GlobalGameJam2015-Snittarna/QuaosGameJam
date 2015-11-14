@@ -1,16 +1,23 @@
 package com.tomnes.dd.level;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.Animation;
+import com.tomnes.dd.framework.GameObject;
+import com.tomnes.dd.framework.Rectangle;
+import com.tomnes.dd.framework.Scene;
+import com.tomnes.dd.gameScene.GameScene;
+import com.tomnes.dd.gameScene.objects.Enemy;
+import com.tomnes.dd.gameScene.objects.Player;
 
 public class Room {
 	private float difficulty;
 	
 	private Animation sprite;
 	
-	private Vector2[] doors;
+	private Rectangle[] doors;
 	
 	private int maxEnemiesToSpawn;
 	
@@ -22,21 +29,56 @@ public class Room {
 		
 		sprite.setPosition(-4.5f, -8);
 		
-		doors = new Vector2[4];
+		doors = new Rectangle[4];
 		
-		doors[0] = Vector2.Zero;
-		doors[1] = Vector2.Zero;
-		doors[2] = Vector2.Zero;
-		doors[3] = Vector2.Zero;
+		doors[0] = new Rectangle(-4, 0, 0.3f, 1);
+		doors[1] = new Rectangle(0, 7, 1, 0.3f);
+		doors[2] = new Rectangle(4, 0, 0.5f, 1);
+		doors[3] = new Rectangle(0, -7, 1, 0.3f);
 		
 		this.maxEnemiesToSpawn = (int)(this.difficulty+1)*10;
 	}
 	
-	public void update() {
-		System.out.println(maxEnemiesToSpawn);
+	public void update(GameScene scene) {
 		if(this.maxEnemiesToSpawn <= 0) {
 			completed = true;
 		}
+		
+		if(completed) {
+			for(GameObject g : scene.getObjects()) {
+				if(g instanceof Player) {
+					for(int i = 0; i < 4; i++) {
+						if(g.getHitbox().collision(doors[i])) {
+							if(i == 0) {
+								g.setPosition(new Vector2(3, 0));
+							}
+							if(i == 1) {
+								g.setPosition(new Vector2(0, -5));
+							}
+							if(i == 2) {
+								g.setPosition(new Vector2(-3, 0));
+							}
+							if(i == 3) {
+								g.setPosition(new Vector2(0, 6));
+							}
+							restart(scene);
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	public void restart(GameScene scene) {
+		completed = false;
+		difficulty += 0.5f;
+		scene.getEnemySpawnManager().setNewMaxSpawnTimes(scene);
+		for(GameObject g : scene.getObjects()) {
+			if(g instanceof Enemy) {
+				scene.removeObject(g);
+			}
+		}
+		this.maxEnemiesToSpawn = (int)(this.difficulty+1)*10;
 	}
 	
 	public float getDifficulty() {

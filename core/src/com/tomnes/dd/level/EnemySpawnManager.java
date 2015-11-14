@@ -35,7 +35,15 @@ public class EnemySpawnManager {
 		maxEnemySpawnTime = new float[3];
 		enemySpawnTime = new float[3];
 		
-		maxEnemySpawnTime[EnemyTypes.RUNNER.getValue()] = 2;
+		for(int i = 0; i < maxEnemySpawnTime.length; i++) {
+			maxEnemySpawnTime[i] = 2+i;
+		}
+	}
+	
+	public void setNewMaxSpawnTimes(GameScene gameScene) {
+		for(int i = 0; i < maxEnemySpawnTime.length; i++) {
+			maxEnemySpawnTime[i] = (2+i-gameScene.getRoom().getDifficulty() >= 0) ? 2+i-gameScene.getRoom().getDifficulty() : 0.1f;
+		}
 	}
 	
 	public void update(GameScene gameScene, float deltaTime) {
