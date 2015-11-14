@@ -46,7 +46,7 @@ public class Player extends Killable {
 		//shootInput = new Joystick(new Rectangle(125, -725, 250, 250));
 		shootInput = new ShootCotroll(new Rectangle(125, -725, 250, 250), this);
 		moveInput = new Joystick(new Rectangle(-375, -725, 250, 250));
-		powerupPickup = new Button("Pick up", new Rectangle(-75, -600, 150, 100));
+		powerupPickup = new Button("Pick up", new Rectangle(-75, -420, 150, 50));
 		hpBar = new Bar(new Rectangle(-150, 740, 300, 50), AssetManager.getTexture("hp-bar"));
 	}
 
@@ -54,8 +54,6 @@ public class Player extends Killable {
 		moveInput.update();
 		shootInput.update();
 		powerupPickup.update();
-		
-		System.out.println(score);
 		
 		firerateCounter -= dt;
 		
@@ -126,6 +124,7 @@ public class Player extends Killable {
 		moveInput.draw(batch);
 		shootInput.draw(batch);
 		hpBar.draw(batch);
+		AssetManager.font.draw(batch, "Score: " + getScore(), -100, 600);
 		if (intersectedPowerup != null) {
 			intersectedPowerup.drawName(batch);
 			powerupPickup.draw(batch);

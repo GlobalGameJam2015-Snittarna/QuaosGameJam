@@ -25,6 +25,7 @@ public abstract class Projectile extends GameObject {
 
 		getSprite().setRotation(angle * 180 / 3.14f);
 		getSprite().setOriginCenter();
+		setPosition(getPosition());
 	}
 	
 	public boolean  hitsPlayer() {

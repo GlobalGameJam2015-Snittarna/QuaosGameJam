@@ -29,6 +29,11 @@ public class Button extends UiElement {
 		isPressed = true;
 	}
 	
+	public void onRelease() {
+		System.out.println("released");
+		isPressed = false;
+	}
+	
 	public void onDrag() {
 		System.out.println("dragged");
 		isPressed = false;
