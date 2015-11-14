@@ -5,9 +5,11 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.Animation;
+import com.tomnes.dd.framework.GameObject;
 import com.tomnes.dd.framework.Killable;
 import com.tomnes.dd.framework.Rectangle;
 import com.tomnes.dd.gameScene.GameScene;
+import com.tomnes.dd.ui.Button;
 import com.tomnes.dd.ui.Joystick;
 
 public class Player extends Killable {
@@ -15,15 +17,25 @@ public class Player extends Killable {
 	private final float speed = 3;
 	private Joystick moveInput;
 	private Joystick shootInput;
+	private Button powerupPickup;
 	
 	private float firerate = .5f;
 	private float firerateCounter;
 	
+	private Powerup.ShootStyle shootStyle;
+	private Powerup.ShotType shotType;
+	
+	private Powerup intersectedPowerup;
+	
 	public Player() {
 		super(new Vector2(0, 0), new Vector2(.85f, 1.7f), new Animation(AssetManager.getTexture("player")), 1);
 
+		shootStyle = shootStyle.Regular;
+		shotType = shotType.Bullet;
+		
 		shootInput = new Joystick(new Rectangle(125, -725, 250, 250));
 		moveInput = new Joystick(new Rectangle(-375, -725, 250, 250));
+		powerupPickup = new Button("Pick up", new Rectangle(-150, -600, 300, 100));
 	}
 
 	public void update(float dt) {
@@ -42,7 +54,16 @@ public class Player extends Killable {
 			firerateCounter = firerate;
 		}
 		
+		intersectedPowerup = intersectsPowerup();
+		
 		super.update(dt);
+	}
+	
+	private Powerup intersectsPowerup() {
+		for (GameObject g : getScene().getObjects()) {
+			if  (g instanceof Powerup && getHitbox().collision(g.getHitbox())) return (Powerup)g;
+		}
+		return null;
 	}
 	
 	public void move(float x, float y) {
@@ -54,5 +75,9 @@ public class Player extends Killable {
 	public void drawUi(SpriteBatch batch) {
 		moveInput.draw(batch);
 		shootInput.draw(batch);
+		if (intersectedPowerup != null) {
+			intersectedPowerup.drawName(batch);
+			powerupPickup.draw(batch);
+		}
 	}
 }
