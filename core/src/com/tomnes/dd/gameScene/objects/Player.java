@@ -93,7 +93,7 @@ public class Player extends Killable {
 	}
 	
 	public void onDeath() {
-		Game.setScene(new GameOverScene());
+		Game.setScene(new GameOverScene(score));
 		super.onDeath();
 	}
 	

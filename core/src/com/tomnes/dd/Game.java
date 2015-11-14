@@ -1,5 +1,7 @@
 package com.tomnes.dd;
 
+import menuScenes.IntroScene;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -30,7 +32,7 @@ public class Game extends ApplicationAdapter {
 		Input.initialize(900, 1600, 450, 800); // defined in scenes. 
 		
 		batch = new SpriteBatch();
-		currentScene = new GameScene();
+		currentScene = new IntroScene();
 		
 		AssetManager.load();
 	}
