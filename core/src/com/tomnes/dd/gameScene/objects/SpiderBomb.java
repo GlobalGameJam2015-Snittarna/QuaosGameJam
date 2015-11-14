@@ -14,8 +14,6 @@ public class SpiderBomb extends Enemy {
 	
 	public void update(float deltaTime) {
 		super.update(deltaTime);
-		//this.moveTowardsPlayer(deltaTime);
-		setTarget(new Vector2(0, 0));
-		this.moveTowardsTarget(deltaTime);
+		this.moveTowardsPlayer(deltaTime);
 	}
 }
