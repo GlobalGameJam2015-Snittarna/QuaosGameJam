@@ -73,7 +73,11 @@ public class Player extends Killable {
 	}
 	
 	public void shoot(float angle) {
-		getScene().addObject(new Bullet(getPosition(), angle, 4, false));
+		switch (shotType) {
+		case Bullet: getScene().addObject(new Bullet(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle, false)); break;
+		case Grenade: getScene().addObject(new Bullet(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle, false)); break;
+		case Laser: getScene().addObject(new Laser(getPosition().cpy().add(getSize().cpy().scl(.5f, .2f)), angle, false)); break;
+		}
 	}
 	
 	private Powerup intersectsPowerup() {

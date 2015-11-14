@@ -39,8 +39,4 @@ public abstract class Projectile extends GameObject {
 	public void onHitWall() {
 		getScene().removeObject(this);
 	}
-	
-	public void draw(SpriteBatch batch) {
-		batch.draw(getSprite().getTexture(), getPosition().x, getPosition().y, getSize().x, getSize().y);
-	}
 }

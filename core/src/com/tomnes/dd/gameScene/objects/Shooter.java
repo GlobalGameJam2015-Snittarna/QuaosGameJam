@@ -33,6 +33,6 @@ public class Shooter extends Enemy {
 	
 	public void onShoot() {
 		super.onShoot();
-		getScene().addObject(new Bullet(getPosition(), this.getShootAngle(), 4, true));
+		getScene().addObject(new Bullet(getPosition(), this.getShootAngle(), true));
 	}
 }

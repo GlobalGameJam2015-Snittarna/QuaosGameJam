@@ -6,8 +6,8 @@ import com.tomnes.dd.AssetManager;
 
 public class Bullet extends Projectile {
 
-	public Bullet(Vector2 position, float angle, float speed, boolean hitsPlayer) {
-		super(position, new Vector2(.2f, .2f), new Animation(AssetManager.getTexture("bullet")), angle, speed, hitsPlayer);
+	public Bullet(Vector2 position, float angle, boolean hitsPlayer) {
+		super(position, new Vector2(.2f, .2f), new Animation(AssetManager.getTexture("bullet")), angle, 4, hitsPlayer);
 		// TODO Auto-generated constructor stub
 	}
 

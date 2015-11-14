@@ -11,6 +11,7 @@ textures: {
 	joystick-center: 138, 0, 32, 32;
 	
 	bullet: 261, 129, 8, 8;
+	laser: 270, 129, 16, 8;
 	
 	powerupShotTypeLaser: 1, 649, 32, 32;
 	powerupShotTypeGrenade: 34, 649, 32, 32;
