@@ -13,7 +13,7 @@ public class Button extends UiElement {
 	
 	public Button(String text, Rectangle area) {
 		super(area);
-		
+		keepGrabbed = false;
 		this.text = text;
 		layout = new GlyphLayout(AssetManager.font, text);
 	}
@@ -23,7 +23,8 @@ public class Button extends UiElement {
 	}
 	
 	public void draw(SpriteBatch batch) {
-		AssetManager.font.draw(batch, text, getArea().getX() + getArea().getWidth() / 2 - layout.width / 2, getArea().getY() - getArea().getHeight() / - layout.height / 2);
+		AssetManager.font.draw(batch, text, getArea().getX() + getArea().getWidth() / 2 - layout.width / 2, getArea().getY() + getArea().getHeight() - layout.height / 2);
+		batch.draw(AssetManager.getTexture("box"), getArea().getX(), getArea().getY(), getArea().getWidth(), getArea().getHeight());
 	}
 
 }

@@ -15,8 +15,23 @@ public class Powerup extends GameObject {
 	
 	public enum ShootStyle { Regular, Double, Triple };
 	
+	private final float dissapearTime = 5;
+	private float timer;
+	
 	private Type type;
 	private ShotType shotType;
+	public ShotType getShotType() {
+		return shotType;
+	}
+
+	public ShootStyle getShootStyle() {
+		return shootStyle;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
 	private ShootStyle shootStyle;
 	
 	private String name;
@@ -36,6 +51,11 @@ public class Powerup extends GameObject {
 			name = "Shooting style:\n" + shootStyle.name();
 		}
 		
+	}
+	
+	public void update(float dt) {
+		timer += dt;
+		if (timer >= dissapearTime) getScene().removeObject(this);
 	}
 	
 	
