@@ -107,7 +107,7 @@ public abstract class GameObject {
 	}
 	
 	public Rectangle getHitbox(){
-		return new Rectangle(this.position, this.size);
+		return new Rectangle(this.position.cpy().sub(this.size.cpy().scl(.5f)), this.size);
 	}
 	
 	public void onRemove() { };
