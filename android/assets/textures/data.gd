@@ -4,6 +4,8 @@ textures: {
 	playerLeft: 1, 129, 32, 64;
 	room1: 326, 128, 450, 800;
 	
+	blood: 309, 129, 16, 16;
+	
 	spiderBomb: 1, 324, 64, 64;
 	shooter: 1, 389, 64, 64;
 	spawner: 1, 519, 128, 128;
