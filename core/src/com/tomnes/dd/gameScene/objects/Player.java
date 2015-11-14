@@ -19,8 +19,8 @@ public class Player extends Killable {
 	public Player() {
 		super(new Vector2(0, 0), new Vector2(.85f, 1.7f), new Animation(AssetManager.getTexture("player")), 1);
 
-		moveInput = new Joystick(new Rectangle(125, -725, 250, 250));
-		shootInput = new Joystick(new Rectangle(-375, -725, 250, 250));
+		shootInput = new Joystick(new Rectangle(125, -725, 250, 250));
+		moveInput = new Joystick(new Rectangle(-375, -725, 250, 250));
 	}
 
 	public void update(float dt) {
