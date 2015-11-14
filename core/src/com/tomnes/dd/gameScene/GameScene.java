@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.tomnes.dd.AssetManager;
 import com.tomnes.dd.framework.Scene;
 import com.tomnes.dd.gameScene.objects.Player;
+import com.tomnes.dd.gameScene.objects.Shooter;
 import com.tomnes.dd.gameScene.objects.SpiderBomb;
 import com.tomnes.dd.level.EnemySpawnManager;
 import com.tomnes.dd.level.Room;
@@ -19,7 +20,7 @@ public class GameScene extends Scene {
 		super();
 		room = new Room();
 		addObject(new Player());
-		addObject(new SpiderBomb(new Vector2(0, 0)));
+		addObject(new Shooter(new Vector2(0, 0)));
 		
 		enemySpawnManager = new EnemySpawnManager();
 	}

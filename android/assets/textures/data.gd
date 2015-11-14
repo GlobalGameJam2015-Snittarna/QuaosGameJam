@@ -4,6 +4,7 @@ textures: {
 	room1: 326, 128, 450, 800;
 	
 	spiderBomb: 1, 324, 64, 64;
+	shooter: 1, 389, 64, 64;
 		
 	joystick-body: 40, 0, 96, 96;
 	joystick-center: 138, 0, 32, 32;

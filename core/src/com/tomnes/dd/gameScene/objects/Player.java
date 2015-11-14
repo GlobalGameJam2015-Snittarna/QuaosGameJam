@@ -36,6 +36,8 @@ public class Player extends Killable {
 		shootInput = new Joystick(new Rectangle(125, -725, 250, 250));
 		moveInput = new Joystick(new Rectangle(-375, -725, 250, 250));
 		powerupPickup = new Button("Pick up", new Rectangle(-150, -600, 300, 100));
+		
+		setHealth(10);
 	}
 
 	public void update(float dt) {
