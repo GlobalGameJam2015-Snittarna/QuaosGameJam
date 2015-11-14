@@ -10,11 +10,13 @@ public class SpiderBomb extends Enemy {
 		super(position, new Vector2(.8f, .8f), new Animation(new Animation(AssetManager.getTexture("spiderBomb"))));
 		setHealth(2);
 		this.setSpeed(1);
+		this.getSprite().setAnimation(1, 4, 0, false);
 	}
 	
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		if(this.isInRoom()) this.moveTowardsPlayer(deltaTime);
+		getSprite().animate(deltaTime);
 	}
 	
 	public void onDeath() {
